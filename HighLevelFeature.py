@@ -1,3 +1,4 @@
+from functools import reduce
 #----------高级特性,切片,迭代,列表生成式,迭代器
 #[起始索引:结束索引:步长] 开始和结束索引不论正数开始还是倒数开始都是左闭右开
 tuple1=(1,2,3,4,5,6,7)
@@ -44,6 +45,23 @@ while True:
     except StopIteration as e:
         print('Generator return value:', e.value)
         break
+
+
+#map  第一个参数是函数,第二个参数是  map(func, *iterables)
+list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+
+#reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)
+DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+def char2num(a):
+    return DIGITS[a]
+
+def str2int(s):
+    return reduce(lambda x, y: x * 10 + y, map(char2num, s))
+#测试
+print(str2int('123'))
+print('s' and '2')
+
 
 
 
